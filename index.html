@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rancangan Pembelajaran Informatika - PBL & Deep Learning</title>
+<title>Media Pembelajaran Informatika - Hardware & Software</title>
 <style>
   @page {
     size: A4;
-    margin: 15mm;
+    margin: 10mm;
   }
 
   *, *::before, *::after {
@@ -16,56 +16,111 @@
 
   body {
     font-family: 'Segoe UI', Arial, sans-serif;
-    margin: 0 auto;
-    padding: 20px;
-    max-width: 900px;
+    margin: 0;
+    padding: 0;
+    background-color: #f1f5f9;
     color: #1e293b;
-    font-size: 10pt;
     line-height: 1.5;
-    background-color: #f8fafc;
   }
 
-  .no-print {
-    margin-bottom: 20px;
-    text-align: right;
-  }
-
-  .btn-print {
-    background-color: #2563eb;
+  /* Navigation Bar Header */
+  .navbar {
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
     color: #ffffff;
-    border: none;
-    padding: 10px 18px;
-    font-size: 10pt;
+    padding: 12px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .navbar-brand {
+    font-size: 14pt;
     font-weight: bold;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .nav-menu {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .nav-btn {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 8px 16px;
     border-radius: 6px;
     cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    transition: background-color 0.2s;
+    font-weight: 600;
+    font-size: 9.5pt;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
   }
 
-  .btn-print:hover {
-    background-color: #1d4ed8;
+  .nav-btn:hover {
+    background-color: #ffffff;
+    color: #1e3a8a;
+  }
+
+  .nav-btn.active {
+    background-color: #f59e0b;
+    color: #ffffff;
+    border-color: #d97706;
+  }
+
+  .container {
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 0 15px;
+  }
+
+  .page-section {
+    display: block;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  /* Card Component */
+  .card {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
   }
 
   .header-banner {
     background: linear-gradient(135deg, #1e3a8a, #3b82f6);
     color: #ffffff;
-    padding: 24px;
+    padding: 20px;
     border-radius: 8px;
     margin-bottom: 20px;
   }
 
   .header-banner h1 {
-    margin: 0 0 8px 0;
-    font-size: 18pt;
-    font-weight: bold;
-    letter-spacing: -0.5px;
+    margin: 0 0 6px 0;
+    font-size: 16pt;
   }
 
   .header-banner p {
     margin: 0;
-    font-size: 10pt;
-    opacity: 0.95;
+    font-size: 9.5pt;
+    opacity: 0.9;
   }
 
   .meta-grid {
@@ -75,382 +130,545 @@
   }
 
   .meta-grid td {
-    padding: 10px 12px;
+    padding: 8px 12px;
     background-color: #ffffff;
     border: 1px solid #e2e8f0;
-    font-size: 9.5pt;
+    font-size: 9pt;
   }
 
   .meta-label {
     font-weight: bold;
     color: #1e3a8a;
     width: 20%;
-    background-color: #f1f5f9;
+    background-color: #f8fafc;
   }
 
   h2 {
     color: #1e3a8a;
-    font-size: 13pt;
-    margin-top: 24px;
-    margin-bottom: 12px;
-    padding-left: 10px;
+    font-size: 12pt;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    padding-left: 8px;
     border-left: 4px solid #3b82f6;
   }
 
   h3 {
     color: #0f172a;
-    font-size: 11pt;
-    margin-top: 16px;
-    margin-bottom: 8px;
-  }
-
-  .card {
-    background-color: #ffffff;
-    border: 1px solid #e2e8f0;
-    border-radius: 6px;
-    padding: 16px 20px;
-    margin-bottom: 16px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-  }
-
-  ul, ol {
-    margin: 6px 0 10px 0;
-    padding-left: 22px;
-  }
-
-  li {
+    font-size: 10.5pt;
+    margin-top: 12px;
     margin-bottom: 6px;
   }
 
   .skenario-box {
     background-color: #f0f9ff;
     border-left: 4px solid #0284c7;
-    padding: 12px 16px;
-    margin: 10px 0;
+    padding: 10px 14px;
+    margin: 8px 0;
     border-radius: 0 6px 6px 0;
+    font-size: 9.5pt;
   }
 
   .skenario-title {
     font-weight: bold;
     color: #0369a1;
-    margin-bottom: 6px;
-    font-size: 10pt;
+    margin-bottom: 4px;
   }
 
   .dialog-guru {
     font-style: italic;
     color: #334155;
+  }
+
+  .img-pemantik {
+    width: 100%;
+    max-width: 650px;
+    display: block;
+    margin: 15px auto;
+    border-radius: 8px;
+    border: 2px solid #cbd5e1;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  /* Style LKPD Interaktif */
+  .lkpd-header {
+    background: linear-gradient(135deg, #0284c7, #0369a1);
+    color: white;
+    text-align: center;
+    padding: 15px;
+    border-radius: 8px 8px 0 0;
+    margin: -20px -20px 20px -20px;
+  }
+
+  .lkpd-header h2 {
+    color: white;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-size: 16pt;
+    text-transform: uppercase;
+  }
+
+  .lkpd-sub {
+    font-size: 10pt;
+    background: #f59e0b;
+    display: inline-block;
+    padding: 2px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    margin-top: 5px;
+  }
+
+  .form-group {
+    margin-bottom: 12px;
+  }
+
+  .form-group label {
+    display: block;
+    font-weight: bold;
     margin-bottom: 4px;
-  }
-
-  .dialog-siswa {
     font-size: 9pt;
-    color: #64748b;
   }
 
-  table.data-table {
+  .form-control {
+    width: 100%;
+    padding: 7px 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    font-size: 9pt;
+  }
+
+  select.form-control {
+    background-color: white;
+  }
+
+  textarea.form-control {
+    resize: vertical;
+    min-height: 60px;
+  }
+
+  table.lkpd-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 10px;
-    margin-bottom: 14px;
+    margin: 10px 0;
     font-size: 9pt;
-    background-color: #ffffff;
   }
 
-  table.data-table th {
+  table.lkpd-table th {
     background-color: #1e3a8a;
-    color: #ffffff;
+    color: white;
+    padding: 8px;
     text-align: left;
-    padding: 9px 12px;
-    font-weight: bold;
     border: 1px solid #1e3a8a;
   }
 
-  table.data-table td {
-    padding: 8px 12px;
+  table.lkpd-table td {
+    padding: 6px 8px;
     border: 1px solid #cbd5e1;
-    vertical-align: top;
+    vertical-align: middle;
   }
 
-  table.data-table tr:nth-child(even) {
-    background-color: #f8fafc;
-  }
-
-  .badge-input { background-color: #dbeafe; color: #1e40af; padding: 3px 7px; border-radius: 4px; font-weight: bold; font-size: 8pt; display: inline-block; }
-  .badge-process { background-color: #fef3c7; color: #92400e; padding: 3px 7px; border-radius: 4px; font-weight: bold; font-size: 8pt; display: inline-block; }
-  .badge-output { background-color: #dcfce7; color: #166534; padding: 3px 7px; border-radius: 4px; font-weight: bold; font-size: 8pt; display: inline-block; }
-  .badge-storage { background-color: #f3e8ff; color: #6b21a8; padding: 3px 7px; border-radius: 4px; font-weight: bold; font-size: 8pt; display: inline-block; }
-
-  .link-box {
-    background-color: #eff6ff;
-    border: 1px dashed #3b82f6;
-    padding: 4px 8px;
+  .badge-kat {
+    display: inline-block;
+    padding: 2px 6px;
     border-radius: 4px;
-    color: #1d4ed8;
-    word-break: break-all;
-    font-family: monospace;
-    font-size: 9pt;
+    font-size: 8pt;
+    font-weight: bold;
+  }
+  .bg-in { background: #dbeafe; color: #1e40af; }
+  .bg-pro { background: #fef3c7; color: #92400e; }
+  .bg-out { background: #dcfce7; color: #166534; }
+  .bg-sto { background: #f3e8ff; color: #6b21a8; }
+
+  .btn-submit {
+    background-color: #16a34a;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 10pt;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   }
 
-  a {
-    color: #1d4ed8;
-    text-decoration: none;
+  .btn-submit:hover {
+    background-color: #15803d;
   }
-  a:hover {
-    text-decoration: underline;
+
+  .btn-back {
+    background-color: #64748b;
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    font-size: 8.5pt;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .btn-back:hover {
+    background-color: #475569;
   }
 
   @media print {
-    .no-print {
-      display: none;
+    .navbar, .btn-back, .btn-submit, .no-print {
+      display: none !important;
     }
     body {
-      background-color: #ffffff;
-      padding: 0;
+      background-color: white;
+    }
+    .container {
       max-width: 100%;
+      margin: 0;
+      padding: 0;
     }
     .card {
+      border: none;
       box-shadow: none;
+      padding: 0;
     }
   }
 </style>
 </head>
 <body>
 
-  <!-- Tombol Cetak PDF -->
-  <div class="no-print">
-    <button class="btn-print" onclick="window.print()">📄 Simpan / Cetak PDF</button>
-  </div>
-
-  <!-- Header Banner -->
-  <div class="header-banner">
-    <h1>MODUL AJAR / RANCANGAN PEMBELAJARAN</h1>
-    <p>Pendekatan Deep Learning (Mindful, Meaningful, & Joyful Learning) berbasis Problem-Based Learning (PBL)</p>
-  </div>
-
-  <!-- Metadata -->
-  <table class="meta-grid">
-    <tr>
-      <td class="meta-label">Mata Pelajaran</td>
-      <td>Informatika / TIK</td>
-      <td class="meta-label">Alokasi Waktu</td>
-      <td>2 x 45 Menit (1 Pertemuan)</td>
-    </tr>
-    <tr>
-      <td class="meta-label">Materi Utama</td>
-      <td>Perangkat Keras (Hardware) & Perangkat Lunak (Software)</td>
-      <td class="meta-label">Model Belajar</td>
-      <td>Problem-Based Learning (PBL)</td>
-    </tr>
-  </table>
-
-  <!-- I. Tujuan Pembelajaran -->
-  <h2>I. Tujuan Pembelajaran</h2>
-  <div class="card">
-    <p style="margin: 0;">
-      Melalui model pembelajaran <strong>Problem-Based Learning (PBL)</strong> dan pengamatan media interaktif, peserta didik mampu <strong>mengidentifikasi berbagai jenis perangkat keras (hardware) dan perangkat lunak (software) beserta fungsinya</strong> secara tepat, kritis, dan kolaboratif.
-    </p>
-  </div>
-
-  <!-- II. Media, Alat, dan Sumber Belajar -->
-  <h2>II. Media, Alat, dan Sumber Belajar</h2>
-  <div class="card">
-    <ul>
-      <li><strong>Media Utama:</strong> Google Classroom Pembelajaran — <a href="https://classroom.google.com/c/ODcyNDEzMTM2NjYw?cjc=dukqqvue" target="_blank" class="link-box">https://classroom.google.com/c/ODcyNDEzMTM2NjYw?cjc=dukqqvue</a></li>
-      <li><strong>Media Digital & Video:</strong> <a href="https://tescbtspentri.github.io/media-informatika/" target="_blank" class="link-box">https://tescbtspentri.github.io/media-informatika/</a></li>
-      <li><strong>Alat & Sarana:</strong> Proyektor, Komputer/Laptop, Obeng & Komponen Fisik Komputer.</li>
-      <li><strong>Integrasi Sistem:</strong> Google Classroom (distribusi draf tugas dan materi digital).</li>
-    </ul>
-  </div>
-
-  <!-- III. Langkah-Langkah Pembelajaran -->
-  <h2>III. Langkah-Langkah Pembelajaran (Sintaks PBL & Deep Learning)</h2>
-
-  <div class="card">
-    <h3>A. Kegiatan Pendahuluan (10 Menit)</h3>
-    <ul>
-      <li><strong>Mindful Learning:</strong> Guru menyapa peserta didik, memeriksa kesiapan belajar, berdoa bersama, dan melakukan <em>ice breaking</em> singkat untuk memfokuskan perhatian siswa.</li>
-      <li><strong>Apersepsi & Motivasi:</strong> Guru menyampaikan tujuan pembelajaran dan mengaitkan pentingnya memahami komponen komputer dalam kehidupan digital saat ini.</li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <h3>B. Kegiatan Inti (70 Menit)</h3>
-
-    <h4 style="color: #0369a1; margin-bottom: 6px;">Sintak 1: Orientasi Peserta Didik pada Masalah (15 Menit)</h4>
-    <p style="margin-top: 0;">Guru menampilkan <strong>Gambar 1</strong> menggunakan proyektor dan memandu diskusi interaktif berikut:</p>
-
-    <div class="skenario-box">
-      <div class="skenario-title">Langkah 1: Mengajak Siswa Mengamati Gambar</div>
-      <div class="dialog-guru"><strong>Guru:</strong> "Anak-anak, coba perhatikan gambar di depan. Di sana ada spanduk bertuliskan 'PBL: Lihat meja kelompok tersebut, kondisinya sangat ramai dengan berbagai benda komputer."</div>
+  <!-- Menu Utama Navigasi -->
+  <div class="navbar">
+    <div class="navbar-brand">
+      💻 Informatika Lab
     </div>
-
-    <div class="skenario-box">
-      <div class="skenario-title">Langkah 2: Melempar Pertanyaan Pemantik Fokus Hardware</div>
-      <div class="dialog-guru"><strong>Guru:</strong> "Sekarang lihat siswa laki-laki dan perempuan di sebelah kiri yang sedang memegang obeng dan komponen persegi kecil (Prosesor/CPU). Benda-benda yang bisa mereka sentuh secara fisik, dipasang pakai obeng, dan dimasukkan ke dalam kotak hitam (casing). Kira-kira apa saja benda yang dapat dilihat dan disentuh oleh siswa?"</div>
-      <div class="dialog-siswa"><em>(Ekspektasi Respon Siswa: RAM, Harddisk, Prosesor, Casing, Keyboard, Mouse, dll.)</em></div>
-    </div>
-
-    <div class="skenario-box">
-      <div class="skenario-title">Langkah 3: Melempar Pertanyaan Pemantik Fokus Software</div>
-      <div class="dialog-guru"><strong>Guru:</strong> "Lalu, lihat siswa perempuan di tengah yang sedang memegang kepingan CD dan menunjuk ke arah layar laptop yang menyala. Di layar laptop itu ada ikon-ikon program dan folder. Apakah isi di dalam laptop itu bisa kita pegang fisiknya?"</div>
-      <div class="dialog-siswa"><em>(Ekspektasi Respon Siswa: Tidak bisa dipegang fisiknya, hanya bisa dilihat dan dioperasikan.)</em></div>
-    </div>
-
-    <div class="skenario-box">
-      <div class="skenario-title">Langkah 4: Menghubungkan ke Masalah Utama (Meaningful Problem)</div>
-      <div class="dialog-guru"><strong>Guru:</strong> "Masalahnya, jika kelompok siswa ini salah membedakan fungsinya—misalnya mereka mengira Windows atau Google Chrome itu berbentuk benda yang harus disekrup ke dalam komputer—apa yang akan terjadi? Bisakah komputer itu menyala dan digunakan?"</div>
-    </div>
-
-    <h4 style="color: #0369a1; margin-bottom: 6px; margin-top: 16px;">Sintak 2: Mengorganisasi Siswa untuk Belajar (10 Menit)</h4>
-    <ol>
-      <li>Guru membagi siswa ke dalam kelompok heterogen (4–5 orang per kelompok).</li>
-      <li>Guru membagikan cetakan <strong>LKPD (Gambar 2)</strong> dan memastikan draf instruksi juga diakses melalui <strong>Google Classroom</strong>.</li>
-      <li>Guru mengarahkan siswa membuka materi/video pendukung pada tautan media interaktif.</li>
-    </ol>
-
-    <h4 style="color: #0369a1; margin-bottom: 6px; margin-top: 16px;">Sintak 3: Membimbing Penyelidikan Individu/Kelompok (25 Menit)</h4>
-    <ul>
-      <li><strong>Aktivitas Siswa:</strong> Siswa aktif berdiskusi, membaca buku digital/cetak, mengamati media interaktif, serta menganalisis perangkat keras dan lunak untuk mengisi tabel LKPD.</li>
-      <li><strong>Aktivitas Guru:</strong> Guru berkeliling memberikan <em>scaffolding</em>, memantau jalannya diskusi, dan meluruskan kendala kelompok.</li>
-    </ul>
-
-    <h4 style="color: #0369a1; margin-bottom: 6px; margin-top: 16px;">Sintak 4: Mengembangkan dan Menyajikan Hasil Karya (6 Menit)</h4>
-    <ul>
-      <li>Perwakilan 1 atau 2 kelompok mempresentasikan hasil jawaban LKPD di depan kelas secara singkat.</li>
-      <li>Kelompok lain menyimak dan memberikan tanggapan kilat (<em>peer-feedback</em>).</li>
-    </ul>
-
-    <h4 style="color: #0369a1; margin-bottom: 6px; margin-top: 16px;">Sintak 5: Menganalisis dan Evaluasi Proses Pemecahan Masalah (4 Menit)</h4>
-    <ul>
-      <li>Guru memberikan penguatan konsep hardware vs software serta meluruskan miskonsepsi siswa.</li>
-      <li>Guru mengapresiasi kerja keras dan kolaborasi siswa (<em>Joyful Learning</em>).</li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <h3>C. Kegiatan Penutup (10 Menit)</h3>
-    <ol>
-      <li><strong>Refleksi Pembelajaran:</strong> Siswa mengisi kolom Refleksi & Penilaian pada LKPD.</li>
-      <li><strong>Integrasi Google Classroom:</strong> Siswa mengonfirmasi atau mengunggah draf tugas LKPD pada Classroom.</li>
-      <li><strong>Penutup:</strong> Doa dan salam penutup.</li>
-    </ol>
-  </div>
-
-  <!-- IV. Lampiran Kunci Jawaban LKPD -->
-  <h2>IV. Lampiran Kunci Jawaban LKPD (Gambar 2)</h2>
-  
-  <div class="card">
-    <h3>Kegiatan 1: Mengidentifikasi Perangkat Keras (Hardware)</h3>
-    <table class="data-table">
-      <thead>
-        <tr>
-          <th style="width: 6%;">No</th>
-          <th style="width: 25%;">Nama Perangkat Keras</th>
-          <th style="width: 18%;">Kategori</th>
-          <th>Fungsi Utama</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>Keyboard</td>
-          <td><span class="badge-input">Input</span></td>
-          <td>Memasukkan data berupa huruf, angka, dan simbol ke dalam komputer.</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Processor (CPU)</td>
-          <td><span class="badge-process">Process</span></td>
-          <td>Memproses data dan menjalankan instruksi seluruh sistem komputer.</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>Monitor</td>
-          <td><span class="badge-output">Output</span></td>
-          <td>Menampilkan hasil pemrosesan data dalam bentuk tampilan visual/gambar.</td>
-        </tr>
-        <tr>
-          <td>4</td>
-          <td>Harddisk / SSD</td>
-          <td><span class="badge-storage">Storage</span></td>
-          <td>Menyimpan data, program, dan sistem operasi secara permanen.</td>
-        </tr>
-        <tr>
-          <td>5</td>
-          <td>Mouse</td>
-          <td><span class="badge-input">Input</span></td>
-          <td>Menggerakkan kursor dan memberikan perintah kuis/klik pada layar.</td>
-        </tr>
-        <tr>
-          <td>6</td>
-          <td>Printer</td>
-          <td><span class="badge-output">Output</span></td>
-          <td>Mencetak dokumen atau gambar dari komputer ke media cetak (kertas).</td>
-        </tr>
-        <tr>
-          <td>7</td>
-          <td>RAM (Random Access Memory)</td>
-          <td><span class="badge-storage">Storage / Process</span></td>
-          <td>Menyimpan data sementara saat aplikasi/program sedang berjalan.</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <h3 style="margin-top: 20px;">Kegiatan 2: Mengidentifikasi Perangkat Lunak (Software)</h3>
-    <table class="data-table">
-      <thead>
-        <tr>
-          <th style="width: 28%;">Jenis Perangkat Lunak</th>
-          <th style="width: 30%;">Contoh Nama Software</th>
-          <th>Fungsi Utama</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Sistem Operasi</strong></td>
-          <td>Windows 11, macOS, Android</td>
-          <td>Mengelola sumber daya hardware dan menyediakan antarmuka dasar sistem.</td>
-        </tr>
-        <tr>
-          <td><strong>Aplikasi Pengolah Kata</strong></td>
-          <td>Microsoft Word</td>
-          <td>Membuat, mengedit, dan memformat dokumen berbasis teks.</td>
-        </tr>
-        <tr>
-          <td><strong>Aplikasi Penjelajah Web</strong></td>
-          <td>Google Chrome</td>
-          <td>Mengakses dan membuka halaman web/informasi di internet.</td>
-        </tr>
-        <tr>
-          <td><strong>Aplikasi Desain/Editor Gambar</strong></td>
-          <td>Adobe Photoshop</td>
-          <td>Mengolah, mengedit, dan membuat karya grafis atau ilustrasi visual.</td>
-        </tr>
-        <tr>
-          <td><strong>Program Antivirus / Utility</strong></td>
-          <td>Avast Antivirus</td>
-          <td>Melindungi sistem komputer dari serangan virus, malware, dan ancaman keamanan.</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <h3 style="margin-top: 20px;">Studi Kasus & Analisis Pemecahan Masalah</h3>
-    <div style="background-color: #fafafa; border: 1px solid #e2e8f0; padding: 12px 14px; border-radius: 6px; margin-bottom: 10px;">
-      <strong>1. Solusi Perangkat Kasus Budi:</strong>
-      <ul style="margin-bottom: 0;">
-        <li><strong>Hardware yang dibutuhkan:</strong> Pen Tablet (atau Mouse) & Monitor.</li>
-        <li><strong>Software yang wajib digunakan:</strong> Adobe Photoshop (atau aplikasi editor gambar digital).</li>
-      </ul>
-    </div>
-
-    <div style="background-color: #fafafa; border: 1px solid #e2e8f0; padding: 12px 14px; border-radius: 6px;">
-      <strong>2. Analisis Komputer Tanpa Sistem Operasi (OS):</strong>
-      <p style="margin: 4px 0 0 0;">
-        Komputer <strong>tidak akan dapat booting atau digunakan sama sekali</strong>. Walaupun seluruh perangkat keras (hardware) canggih sudah terpasang, Sistem Operasi berfungsi sebagai jembatan utama yang mengontrol hardware dan menjalankan aplikasi software. Tanpa OS, hardware tidak memiliki instruksi untuk bekerja.
-      </p>
+    <div class="nav-menu">
+      <button class="nav-btn active" onclick="showSection('rancangan')">📄 Modul Ajar</button>
+      <a class="nav-btn" href="https://classroom.google.com/c/ODcyNDEzMTM2NjYw?cjc=dukqqvue" target="_blank">📚 Materi (Classroom)</a>
+      <a class="nav-btn" href="https://www.instaplay.ai/play/ten-gems-of-circuit-forest/9b18e194" target="_blank">🎮 Kuis (Game)</a>
+      <button class="nav-btn" onclick="showSection('lkpd')">✏️ Tugas (LKPD)</button>
+      <a class="nav-btn" href="https://docs.google.com/spreadsheets/d/1WjysfTXyHp2HJeSkiBiSjDKtXoi3jjcaO-72Uxjxl8E/edit?gid=0#gid=0" target="_blank">📊 Administrasi</a>
     </div>
   </div>
 
+  <div class="container">
+
+    <!-- HALAMAN 1: MODUL AJAR (UTAMA) -->
+    <div id="section-rancangan" class="page-section">
+      <div class="header-banner">
+        <h1>MODUL AJAR / RANCANGAN PEMBELAJARAN</h1>
+        <p>Pendekatan Deep Learning berbasis Problem-Based Learning (PBL)</p>
+      </div>
+
+      <table class="meta-grid">
+        <tr>
+          <td class="meta-label">Mata Pelajaran</td>
+          <td>Informatika / TIK</td>
+          <td class="meta-label">Alokasi Waktu</td>
+          <td>2 x 45 Menit (1 Pertemuan)</td>
+        </tr>
+        <tr>
+          <td class="meta-label">Materi Utama</td>
+          <td>Perangkat Keras (Hardware) & Perangkat Lunak (Software)</td>
+          <td class="meta-label">Model Belajar</td>
+          <td>Problem-Based Learning (PBL)</td>
+        </tr>
+      </table>
+
+      <h2>I. Tujuan Pembelajaran</h2>
+      <div class="card">
+        <p style="margin: 0;">
+          Melalui model pembelajaran <strong>Problem-Based Learning (PBL)</strong> dan pengamatan media interaktif, peserta didik mampu <strong>mengidentifikasi berbagai jenis perangkat keras (hardware) dan perangkat lunak (software) beserta fungsinya</strong> secara tepat, kritis, dan kolaboratif.
+        </p>
+      </div>
+
+      <h2>II. Media, Alat, dan Sumber Belajar</h2>
+      <div class="card">
+        <ul>
+          <li><strong>Materi Utama:</strong> <a href="https://classroom.google.com/c/ODcyNDEzMTM2NjYw?cjc=dukqqvue" target="_blank">Google Classroom Informatika</a></li>
+          <li><strong>Game Kuis:</strong> <a href="https://www.instaplay.ai/play/ten-gems-of-circuit-forest/9b18e194" target="_blank">Ten Gems of Circuit Forest</a></li>
+          <li><strong>Administrasi Guru:</strong> <a href="https://docs.google.com/spreadsheets/d/1WjysfTXyHp2HJeSkiBiSjDKtXoi3jjcaO-72Uxjxl8E/edit?gid=0#gid=0" target="_blank">Spreadsheet Nilai & Rekap</a></li>
+          <li><strong>Alat & Sarana:</strong> Proyektor, Laptop, Kit Hardware Komputer.</li>
+        </ul>
+      </div>
+
+      <h2>III. Langkah-Langkah Pembelajaran (Sintaks PBL)</h2>
+      <div class="card">
+        <h3>A. Pendahuluan (10 Menit)</h3>
+        <ul>
+          <li><strong>Mindful Learning:</strong> Berdoa, presensi, dan ice breaking fokus.</li>
+          <li><strong>Apersepsi:</strong> Menyampaikan tujuan pembelajaran dan motivasi pentingnya konsep hardware/software.</li>
+        </ul>
+
+        <h3>B. Kegiatan Inti (70 Menit)</h3>
+        <h4 style="color: #0369a1; margin-bottom: 4px;">Sintak 1: Orientasi Peserta Didik pada Masalah (15 Menit)</h4>
+        <p style="margin-top: 0;">Guru menampilkan <strong>Gambar Pemantik</strong> berikut di depan kelas:</p>
+
+        <!-- Gambar Pemantik -->
+        <img src="https://i.ibb.co.com/WWd30sWv/Gambar-Pemantik.jpg" alt="Gambar Pemantik Laboratorium PBL" class="img-pemantik">
+
+        <div class="skenario-box">
+          <div class="skenario-title">Skenario Diskusi Pemantik:</div>
+          <div class="dialog-guru"><strong>Guru:</strong> "Anak-anak, perhatikan gambar laboratorium di atas. Benda-benda fisik mana yang bisa dipegang dan dipasang menggunakan obeng (Hardware), dan mana sistem/program yang hanya ada di dalam layar (Software)? Apa dampak jika sistem operasi tidak ada?"</div>
+        </div>
+
+        <h4 style="color: #0369a1; margin-bottom: 4px; margin-top: 14px;">Sintak 2-5: Diskusi & Pengerjaan Tugas</h4>
+        <p>Siswa membentuk kelompok, membuka menu <strong>Tugas (LKPD)</strong> di website ini, melakukan pengamatan, serta mengisi lembar kerja secara langsung.</p>
+      </div>
+    </div>
+
+
+    <!-- HALAMAN 2: LKPD INTERAKTIF (MENU TUGAS) -->
+    <div id="section-lkpd" class="page-section hidden">
+      <button class="btn-back" onclick="showSection('rancangan')">⬅️ Kembali ke Menu Utama / Modul Ajar</button>
+
+      <div class="card">
+        <div class="lkpd-header">
+          <h2>LEMBAR KERJA PESERTA DIDIK (LKPD)</h2>
+          <div class="lkpd-sub">Informatika / Teknologi Informasi dan Komunikasi</div>
+        </div>
+
+        <table style="width: 100%; margin-bottom: 15px; font-size: 9pt;">
+          <tr>
+            <td><strong>Materi:</strong> Perangkat Keras & Perangkat Lunak</td>
+            <td><strong>Alokasi Waktu:</strong> 2 x 45 Menit</td>
+          </tr>
+        </table>
+
+        <form id="formLKPD" onsubmit="simpanLKPD(event)">
+          <!-- A. Identitas Peserta Didik -->
+          <div style="background-color: #f0fdf4; border: 1px solid #bbf7d0; padding: 12px; border-radius: 6px; margin-bottom: 15px;">
+            <h3 style="margin-top:0; color: #166534;">A. IDENTITAS PESERTA DIDIK</h3>
+            <div class="form-group">
+              <label>Nama Kelompok:</label>
+              <input type="text" class="form-control" placeholder="Contoh: Kelompok 1 (Turing)" required>
+            </div>
+            <div class="form-group">
+              <label>Nama Anggota Kelompok:</label>
+              <input type="text" class="form-control" placeholder="1. Nama Siswa 1" style="margin-bottom: 4px;" required>
+              <input type="text" class="form-control" placeholder="2. Nama Siswa 2" style="margin-bottom: 4px;">
+              <input type="text" class="form-control" placeholder="3. Nama Siswa 3" style="margin-bottom: 4px;">
+              <input type="text" class="form-control" placeholder="4. Nama Siswa 4">
+            </div>
+            <div style="display: flex; gap: 10px;">
+              <div class="form-group" style="flex: 1;">
+                <label>Kelas:</label>
+                <input type="text" class="form-control" placeholder="VII / VIII / IX" required>
+              </div>
+            </div>
+          </div>
+
+          <!-- B. Ringkasan Materi Quick Ref -->
+          <div style="background-color: #eff6ff; border: 1px solid #bfdbfe; padding: 10px; border-radius: 6px; margin-bottom: 15px; font-size: 8.5pt;">
+            <strong>💡 Ringkasan Acuan Kategori:</strong>
+            <span class="badge-kat bg-in">Input Device</span> (Masukan) | 
+            <span class="badge-kat bg-pro">Process Device</span> (Pemrosesan) | 
+            <span class="badge-kat bg-out">Output Device</span> (Keluaran) | 
+            <span class="badge-kat bg-sto">Storage Device</span> (Penyimpanan)
+          </div>
+
+          <!-- C. Kegiatan 1 -->
+          <h3>C. KEGIATAN 1: MENGIDENTIFIKASI PERANGKAT KERAS (HARDWARE)</h3>
+          <p style="font-size: 8.5pt; color: #475569;">Amati perangkat keras di bawah ini, pilih kategori dan tuliskan fungsinya!</p>
+          
+          <table class="lkpd-table">
+            <thead>
+              <tr>
+                <th style="width: 5%;">No</th>
+                <th style="width: 25%;">Nama Perangkat</th>
+                <th style="width: 25%;">Kategori Perangkat</th>
+                <th>Fungsi Utama</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Keyboard</td>
+                <td>
+                  <select class="form-control" required>
+                    <option value="">-- Pilih --</option>
+                    <option value="Input">Input Device</option>
+                    <option value="Process">Process Device</option>
+                    <option value="Output">Output Device</option>
+                    <option value="Storage">Storage Device</option>
+                  </select>
+                </td>
+                <td><input type="text" class="form-control" placeholder="Jawaban fungsi..." required></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Processor (CPU)</td>
+                <td>
+                  <select class="form-control" required>
+                    <option value="">-- Pilih --</option>
+                    <option value="Input">Input Device</option>
+                    <option value="Process">Process Device</option>
+                    <option value="Output">Output Device</option>
+                    <option value="Storage">Storage Device</option>
+                  </select>
+                </td>
+                <td><input type="text" class="form-control" placeholder="Jawaban fungsi..." required></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Monitor</td>
+                <td>
+                  <select class="form-control" required>
+                    <option value="">-- Pilih --</option>
+                    <option value="Input">Input Device</option>
+                    <option value="Process">Process Device</option>
+                    <option value="Output">Output Device</option>
+                    <option value="Storage">Storage Device</option>
+                  </select>
+                </td>
+                <td><input type="text" class="form-control" placeholder="Jawaban fungsi..." required></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Harddisk / SSD</td>
+                <td>
+                  <select class="form-control" required>
+                    <option value="">-- Pilih --</option>
+                    <option value="Input">Input Device</option>
+                    <option value="Process">Process Device</option>
+                    <option value="Output">Output Device</option>
+                    <option value="Storage">Storage Device</option>
+                  </select>
+                </td>
+                <td><input type="text" class="form-control" placeholder="Jawaban fungsi..." required></td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Mouse</td>
+                <td>
+                  <select class="form-control" required>
+                    <option value="">-- Pilih --</option>
+                    <option value="Input">Input Device</option>
+                    <option value="Process">Process Device</option>
+                    <option value="Output">Output Device</option>
+                    <option value="Storage">Storage Device</option>
+                  </select>
+                </td>
+                <td><input type="text" class="form-control" placeholder="Jawaban fungsi..." required></td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>Printer</td>
+                <td>
+                  <select class="form-control" required>
+                    <option value="">-- Pilih --</option>
+                    <option value="Input">Input Device</option>
+                    <option value="Process">Process Device</option>
+                    <option value="Output">Output Device</option>
+                    <option value="Storage">Storage Device</option>
+                  </select>
+                </td>
+                <td><input type="text" class="form-control" placeholder="Jawaban fungsi..." required></td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>RAM</td>
+                <td>
+                  <select class="form-control" required>
+                    <option value="">-- Pilih --</option>
+                    <option value="Input">Input Device</option>
+                    <option value="Process">Process Device</option>
+                    <option value="Output">Output Device</option>
+                    <option value="Storage">Storage Device</option>
+                  </select>
+                </td>
+                <td><input type="text" class="form-control" placeholder="Jawaban fungsi..." required></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- D. Kegiatan 2 -->
+          <h3>D. KEGIATAN 2: MENGIDENTIFIKASI PERANGKAT LUNAK (SOFTWARE)</h3>
+          <p style="font-size: 8.5pt; color: #475569;">Pilihan Software: <em>Windows 11, Google Chrome, Microsoft Word, Avast Antivirus, macOS, Adobe Photoshop, Android, VLC Media Player.</em></p>
+
+          <table class="lkpd-table">
+            <thead>
+              <tr>
+                <th style="width: 28%;">Jenis Perangkat Lunak</th>
+                <th style="width: 32%;">Contoh Nama Software</th>
+                <th>Fungsi Utama</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Sistem Operasi</strong></td>
+                <td><input type="text" class="form-control" placeholder="Contoh software..." required></td>
+                <td><input type="text" class="form-control" placeholder="Fungsi..." required></td>
+              </tr>
+              <tr>
+                <td><strong>Aplikasi Pengolah Kata</strong></td>
+                <td><input type="text" class="form-control" placeholder="Contoh software..." required></td>
+                <td><input type="text" class="form-control" placeholder="Fungsi..." required></td>
+              </tr>
+              <tr>
+                <td><strong>Aplikasi Penjelajah Web</strong></td>
+                <td><input type="text" class="form-control" placeholder="Contoh software..." required></td>
+                <td><input type="text" class="form-control" placeholder="Fungsi..." required></td>
+              </tr>
+              <tr>
+                <td><strong>Aplikasi Desain / Editor</strong></td>
+                <td><input type="text" class="form-control" placeholder="Contoh software..." required></td>
+                <td><input type="text" class="form-control" placeholder="Fungsi..." required></td>
+              </tr>
+              <tr>
+                <td><strong>Program Antivirus / Utility</strong></td>
+                <td><input type="text" class="form-control" placeholder="Contoh software..." required></td>
+                <td><input type="text" class="form-control" placeholder="Fungsi..." required></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- E. Studi Kasus -->
+          <h3>E. STUDI KASUS & ANALISIS</h3>
+          <div class="form-group">
+            <label>1. Budi ingin menggambar ilustrasi digital di komputernya. Sebutkan 1 perangkat keras dan 1 perangkat lunak yang wajib Budi gunakan agar pekerjaannya selesai dengan baik!</label>
+            <textarea class="form-control" placeholder="Tuliskan jawaban analisis..." required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>2. Apa yang akan terjadi pada sebuah sistem komputer jika perangkat kerasnya sangat canggih, namun tidak diinstal perangkat lunak (software) sistem operasi di dalamnya? Jelaskan!</label>
+            <textarea class="form-control" placeholder="Tuliskan jawaban analisis..." required></textarea>
+          </div>
+
+          <!-- F. Refleksi -->
+          <h3>F. REFLEKSI PESERTA DIDIK</h3>
+          <div class="form-group">
+            <label>Apa hal paling menarik atau pengalaman baru yang kelompok Anda dapatkan pada pembelajaran hari ini?</label>
+            <textarea class="form-control" placeholder="Tuliskan refleksi kelompok..." required></textarea>
+          </div>
+
+          <div style="text-align: center; margin-top: 20px;">
+            <button type="submit" class="btn-submit">💾 Simpan / Cetak Hasil Jawaban LKPD (PDF)</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function showSection(sectionId) {
+      document.querySelectorAll('.page-section').forEach(sec => {
+        sec.classList.add('hidden');
+      });
+      document.getElementById('section-' + sectionId).classList.remove('hidden');
+
+      // Update active style tombol nav
+      const buttons = document.querySelectorAll('.nav-btn');
+      buttons[0].classList.toggle('active', sectionId === 'rancangan');
+      buttons[3].classList.toggle('active', sectionId === 'lkpd');
+
+      window.scrollTo(0, 0);
+    }
+
+    function simpanLKPD(event) {
+      event.preventDefault();
+      alert('Jawaban LKPD berhasil tersimpan! Anda dapat menyimpan dokumen ini sebagai file PDF melalui jendela cetak yang akan terbuka.');
+      window.print();
+    }
+  </script>
 </body>
 </html>
